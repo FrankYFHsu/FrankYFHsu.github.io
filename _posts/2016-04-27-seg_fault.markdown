@@ -1,0 +1,35 @@
+---
+layout: post
+comments: true
+title:  "fprintf segmentation fault"
+excerpt: "記錄一下遇到segmentation fault:11 的case"
+date:   2016-04-27 20:00:00
+---
+
+
+以為只是某個陣列出錯，結果居然是fprintf找不到檔案引起的
+
+某個程式區塊內容
+```c
+char fileloc[50];
+sprintf(fileloc,"move_trace/Node%d", i+1);
+n.PrintTrace(fileloc);
+
+//略
+void Node::PrintTrace(char *filename){
+    //open the file
+    outfile = fopen(filename,"w");
+}
+```
+
+其中的`outfile`是Node的成員變數(對C++不熟，不知道是不是跟Java的講法一樣)
+```c
+FILE *outfile;
+```
+之後程式執行到下面這行就出現segmentation fault
+```c
+fprintf(outfile,"#period %d, community %d:\n", i, j);
+```
+最後debug出來是因為`fopen(filename,"w")`並沒有成功，好像目錄*move_trace*不先建立就不行 
+
+
