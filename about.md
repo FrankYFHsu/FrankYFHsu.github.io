@@ -4,5 +4,6 @@ title: About
 permalink: /about/
 ---
 
-Hi, I'm Yu-Feng Hsu. Currently I'm studying for a PhD at Department of Communications Engineering, National Central University, Taiwan. 
+Hi, I'm Yu-Feng Hsu. I received the PhD degree in communication engineering from the National Central University, Taiwan, in 2018.
+My research interests include Delay tolerant networks/Mobile opportunistic networks, home networking technology, and Internet of Things. 
 This is my blog for my learning notes.
